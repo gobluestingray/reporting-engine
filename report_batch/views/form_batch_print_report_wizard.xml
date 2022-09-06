@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--
+     |==========================================================================
+     | Form View: Batch Print Report Wizard
+     |==========================================================================
+    -->
+    <record id="form_batch_print_reports_wizard" model="ir.ui.view">
+        <field name="name">batch.print.reports.wizard.form</field>
+        <field name="model">batch.print.reports.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Batch Print Reports">
+                <group>
+                    <group name="reports">
+                        <field name="res_model" invisible="1"/>
+                        <field name="report_ids" widget="many2many_checkboxes">
+                            <tree>
+                                <field name="name"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group>
+                        <field name="is_collated_by_record"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Print Reports" name="generate_batch_report" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

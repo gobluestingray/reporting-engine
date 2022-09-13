@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--
+     |==========================================================================
+     | Server Action: Batch Print Reports
+     |==========================================================================
+     |
+     | Add the "Batch Print Reports" option to the "Action" dropdown on Sale
+     | Orders and Product Templates.
+     |
+    -->
+    <record id="action_batch_print_report_sale_order" model="ir.actions.server">
+        <field name="name">Batch Print Reports</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">action = env["ir.actions.report"].batch_print_reports(records)</field>
+    </record>
+
+    <record id="action_batch_print_report_product_template" model="ir.actions.server">
+        <field name="name">Batch Print Reports</field>
+        <field name="model_id" ref="product.model_product_template"/>
+        <field name="binding_model_id" ref="product.model_product_template"/>
+        <field name="binding_view_types">form,list</field>
+        <field name="state">code</field>
+        <field name="code">action = env["ir.actions.report"].batch_print_reports(records)</field>
+    </record>
+
+    <!--
+     |==========================================================================
+     | Window Action: Batch Print Reports Wizard
+     |==========================================================================
+    -->
+    <record id="action_batch_print_reports_wizard" model="ir.actions.act_window">
+        <field name="name">Batch Print Reports</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">batch.print.reports.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
